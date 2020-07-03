@@ -1,15 +1,15 @@
-Social Media - Backend C#
+## Social Media - Backend C#
 
-Implementing Net Core 3.1:
+## Implementing Net Core 3.1:
 
-Clean Architecture
+* Clean Architecture
 
-Dependency Injection
+* Dependency Injection
 
-Fluet Api entity Framework Core
+* Fluet Api entity Framework Core
 
-Mapping Entities to DTOs
+* Mapping Entities to DTOs
 
-Fluent Validation
+* Fluent Validation
 
-Filters
+* Filters
