@@ -1,0 +1,9 @@
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Core\bin\Debug\netstandard2.0\SocialMedia.Core.deps.json
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Core\bin\Debug\netstandard2.0\SocialMedia.Core.dll
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Core\bin\Debug\netstandard2.0\SocialMedia.Core.pdb
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Core\obj\Debug\netstandard2.0\SocialMedia.Core.AssemblyInfoInputs.cache
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Core\obj\Debug\netstandard2.0\SocialMedia.Core.AssemblyInfo.cs
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Core\obj\Debug\netstandard2.0\SocialMedia.Core.dll
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Core\obj\Debug\netstandard2.0\SocialMedia.Core.pdb
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Core\obj\Debug\netstandard2.0\SocialMedia.Core.csprojAssemblyReference.cache
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Core\obj\Debug\netstandard2.0\SocialMedia.Core.csproj.CoreCompileInputs.cache

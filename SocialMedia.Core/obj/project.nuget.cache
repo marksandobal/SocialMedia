@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "MNnMDfvBmkH9i0B0IKjX2mddb5PmvgMQmm33MTEosbzwB8EDCtw7BNwLT1z3yqCH5HwS0gyvKwuCgzZuGv2cuw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Arturo\\source\\repos\\SocialMedia\\SocialMedia.Core\\SocialMedia.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Arturo\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
