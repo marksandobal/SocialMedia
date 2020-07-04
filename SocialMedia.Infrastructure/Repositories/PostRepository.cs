@@ -32,7 +32,24 @@ namespace SocialMedia.Infrastructure.Repositories
         public async Task InsertPost(Posts post)
         {
             _context.Posts.Add(post);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<bool> UpdatePost(Posts post)
+        {
+            _context.Posts.Update(post);
+            int rows = await _context.SaveChangesAsync();
+
+            return rows > 0;
+        }
+
+        public async Task<bool> DeletePost(int id)
+        {
+            var post = _context.Posts.FirstOrDefault(x => x.Id == id);
+            _context.Posts.Remove(post);
+            int rows = await _context.SaveChangesAsync();
+
+            return rows > 0;
         }
     }
 }
