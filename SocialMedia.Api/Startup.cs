@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SocialMedia.Core.Interfaces;
+using SocialMedia.Core.Services;
 using SocialMedia.Infrastructure.Data;
 using SocialMedia.Infrastructure.Filters;
 using SocialMedia.Infrastructure.Repositories;
@@ -42,7 +43,12 @@ namespace SocialMedia.Api
             // NOTA: We cant use validators for ModelState or configure validations for FluentValidator library
 
             // Add configuration to dependency Injection
+
             services.AddTransient<IPostRepository, PostRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
+
+            // Services
+            services.AddTransient<IPostService, PostService>();
 
             services.AddMvc(options =>
             {

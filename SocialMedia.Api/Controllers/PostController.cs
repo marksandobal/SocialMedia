@@ -18,18 +18,18 @@ namespace SocialMedia.Api.Controllers
     [ApiController]
     public class PostController : ControllerBase
     {
-        private readonly IPostRepository _postRepository;
+        private readonly IPostService _postService;
         private readonly IMapper _mapper;
-        public PostController(IPostRepository postRepository, IMapper mapper)
+        public PostController(IPostService postService, IMapper mapper)
         {
-            _postRepository = postRepository;
+            _postService = postService;
             _mapper = mapper;
         }
         // GET: api/<PostController>
         [HttpGet]
         public async Task<IActionResult> GetPosts()
         {
-            var posts = await _postRepository.GetPosts();
+            var posts = await _postService.GetPosts();
             //Con el mapper no necesitas mapperar manualmente el objeto de salida o entrada
             var postDto = _mapper.Map<IEnumerable<PostsDto>>(posts);
             var response = new ApiResponse<IEnumerable<PostsDto>>(postDto);
@@ -39,7 +39,7 @@ namespace SocialMedia.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPost(int id)
         {
-            var post = await _postRepository.GetPostById(id);
+            var post = await _postService.GetPostById(id);
             var postDto = _mapper.Map<PostsDto>(post);
             var response = new ApiResponse<PostsDto>(postDto);
             return Ok(response);
@@ -49,15 +49,8 @@ namespace SocialMedia.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] PostsDto postDto)
         {
-            //var post = new Posts() { 
-            //    Id = postDto.Id,
-            //    Date = postDto.Date,
-            //    Description = postDto.Description,
-            //    Image = postDto.Image,
-            //    UserId = postDto.UserId
-            //};
             var post = _mapper.Map<Posts>(postDto);
-            await _postRepository.InsertPost(post);
+            await _postService.InsertPost(post);
             postDto = _mapper.Map<PostsDto>(post);
             var response = new ApiResponse<PostsDto>(postDto);
             return Ok(response);
@@ -68,8 +61,7 @@ namespace SocialMedia.Api.Controllers
         public async Task<IActionResult> Put(int id, [FromBody] PostsDto postDto)
         {
             var post = _mapper.Map<Posts>(postDto);
-            post.Id = id;
-            var result = await _postRepository.UpdatePost(post);
+            var result = await _postService.UpdatePost(id, post);
             var response = new ApiResponse<PostsDto>(postDto);
             return Ok(response);
         }
@@ -78,7 +70,7 @@ namespace SocialMedia.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await _postRepository.DeletePost(id);
+            var result = await _postService.DeletePost(id);
             var response = new ApiResponse<bool>(result);
             return Ok(response);
         }
