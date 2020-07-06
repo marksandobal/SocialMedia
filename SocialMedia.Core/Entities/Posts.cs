@@ -1,15 +1,15 @@
-﻿using System;
+﻿using SocialMedia.Core.Entities;
+using System;
 using System.Collections.Generic;
 namespace SocialMedia.Core.Data
 {
-    public partial class Posts
+    public partial class Posts : BaseEntity
     {
         public Posts()
         {
             Comments = new HashSet<Comments>();
         }
 
-        public int Id { get; set; }
         public int UserId { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }

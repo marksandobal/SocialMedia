@@ -44,8 +44,14 @@ namespace SocialMedia.Api
 
             // Add configuration to dependency Injection
 
-            services.AddTransient<IPostRepository, PostRepository>();
-            services.AddTransient<IUserRepository, UserRepository>();
+            //services.AddTransient<IPostRepository, PostRepository>();
+            //services.AddTransient<IUserRepository, UserRepository>();
+
+            // -- Agregamos el repo generico y eliminamos los anteriores --
+            services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+
+            // -- Agregamos el Unityofwork para hacer uso de los repositorios
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             // Services
             services.AddTransient<IPostService, PostService>();

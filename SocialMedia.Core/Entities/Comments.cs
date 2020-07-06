@@ -1,11 +1,11 @@
-﻿using System;
+﻿using SocialMedia.Core.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace SocialMedia.Core.Data
 {
-    public partial class Comments
+    public partial class Comments : BaseEntity
     {
-        public int Id { get; set; }
         public int PostId { get; set; }
         public int UserId { get; set; }
         public string Description { get; set; }
