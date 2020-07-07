@@ -29,7 +29,7 @@ namespace SocialMedia.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetPosts()
         {
-            var posts = await _postService.GetPosts();
+            var posts = _postService.GetPosts();
             //Con el mapper no necesitas mapperar manualmente el objeto de salida o entrada
             var postDto = _mapper.Map<IEnumerable<PostsDto>>(posts);
             var response = new ApiResponse<IEnumerable<PostsDto>>(postDto);

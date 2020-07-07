@@ -9,14 +9,18 @@ using SocialMedia.Infrastructure.Data;
 
 namespace SocialMedia.Infrastructure.Repositories
 {
-    public class PostRepository : IPostRepository
+    //public class PostRepository : IPostRepository //Cambiamos esta implementacion por la BAse
+    public class PostRepository : BaseRepository<Posts>, IPostRepository
     {
-        private readonly SocialMediaContext _context;
-        public PostRepository(SocialMediaContext context)
+
+        //private readonly SocialMediaContext _context;
+        public PostRepository(SocialMediaContext context) : base(context)
         {
-            _context = context;
+
         }
 
+        #region Las operaciones crud fueron remplazadas por el UnitiOfWork
+        /*
         public async Task<IEnumerable<Posts>> GetPosts()
         {
             var posts = await _context.Posts.ToListAsync();
@@ -50,6 +54,13 @@ namespace SocialMedia.Infrastructure.Repositories
             int rows = await _context.SaveChangesAsync();
 
             return rows > 0;
+        }
+        */
+        #endregion
+
+        public async Task<IEnumerable<Posts>> GetPostsByUser(int userId)
+        {
+            return await _entities.Where(x => x.UserId == userId).ToListAsync();
         }
     }
 }

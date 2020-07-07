@@ -4,6 +4,7 @@ using SocialMedia.Core.Interfaces;
 using SocialMedia.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,16 +14,16 @@ namespace SocialMedia.Infrastructure.Repositories
     {
 
         private readonly SocialMediaContext _context;
-        private DbSet<T> _entities;
+        protected DbSet<T> _entities;
 
         public BaseRepository(SocialMediaContext context)
         {
             _context = context;
             _entities = context.Set<T>();
         }
-        public async Task<IEnumerable<T>> GetAll()
+        public IEnumerable<T> GetAll()
         {
-            return await _entities.ToListAsync();
+            return _entities.AsEnumerable();
         }
 
         public async Task<T> GetById(int id)
@@ -32,15 +33,18 @@ namespace SocialMedia.Infrastructure.Repositories
 
         public async Task<T> Add(T entity)
         {
-            _entities.Add(entity);
-            await _context.SaveChangesAsync();
+            await _entities.AddAsync(entity);
+            // Removemos los save por que el UnitOfWork hace el guardado
+            //await _context.SaveChangesAsync();
 
             return entity;
         }
         public async Task<T> Update(T entity)
         {
-            _entities.Update(entity);
-            await _context.SaveChangesAsync();
+             _entities.Update(entity);
+
+            //Removemos los save por que el UnitOfWork hace el guardado
+            //await _context.SaveChangesAsync();
 
             return entity;
         }
@@ -49,7 +53,8 @@ namespace SocialMedia.Infrastructure.Repositories
         {
             T entity = await GetById(id);
             _entities.Remove(entity);
-            await _context.SaveChangesAsync();
+
+            //await _context.SaveChangesAsync();
         }
     }
 }

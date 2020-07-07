@@ -1,7 +1,9 @@
 ﻿using SocialMedia.Core.Data;
+using SocialMedia.Core.Exceptions;
 using SocialMedia.Core.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,10 +26,10 @@ namespace SocialMedia.Core.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IEnumerable<Posts>> GetPosts()
+        public IEnumerable<Posts> GetPosts()
         {
             //var posts = await _postRepository.GetPosts();
-            var posts = await _unitOfWork.PostRepository.GetAll();
+            var posts = _unitOfWork.PostRepository.GetAll();
             return posts;
         }
 
@@ -42,21 +44,34 @@ namespace SocialMedia.Core.Services
         {
             //var user = await _userRepository.GetUserById(post.UserId);
             var user = await _unitOfWork.UserRepository.GetById(post.UserId);
-            if (user.Equals(null))
+            if (user == null)
             {
-                throw new Exception("User doen't exist");
+                throw new BusinessException("User doen't exist");
+            }
+
+            var userPosts = await _unitOfWork.PostRepository.GetPostsByUser(post.UserId);
+            if (userPosts.Count() < 10)
+            {
+                var lastPost = userPosts.LastOrDefault();
+                if ((DateTime.Now - lastPost.Date).TotalDays < 7) 
+                {
+                    throw new BusinessException("You are not able to publish the post");
+                }
             }
             // await _postRepository.InsertPost(post); // removemos la linea por el repositorio generico
             // await _postRepository.Add(post); // removemos la lina por el repo de repos
             
             await _unitOfWork.PostRepository.Add(post);
+            await _unitOfWork.SaveChangesAsync();
         }
 
         public async Task<Posts> UpdatePost(int id, Posts post)
         {
             post.Id = id;
             //var result = await _postRepository.UpdatePost(post);
-            await _unitOfWork.PostRepository.Update(post);
+            _unitOfWork.PostRepository.Update(post);
+            await _unitOfWork.SaveChangesAsync();
+
             return post;
         }
 

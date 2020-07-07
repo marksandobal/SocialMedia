@@ -5,12 +5,15 @@ using System.Threading.Tasks;
 
 namespace SocialMedia.Core.Interfaces
 {
-    public interface IPostRepository
+    public interface IPostRepository : IRepository<Posts>
     {
-        Task<IEnumerable<Posts>> GetPosts();
-        Task<Posts> GetPostById(int id);
-        Task InsertPost(Posts post);
-        Task<bool> UpdatePost(Posts post);
-        Task<bool> DeletePost(int id);
+        //El CRUD fue remplazado por el UnitiOfWork
+        //Task<IEnumerable<Posts>> GetPosts();
+        //Task<Posts> GetPostById(int id);
+        //Task InsertPost(Posts post);
+        //Task<bool> UpdatePost(Posts post);
+        //Task<bool> DeletePost(int id);
+
+        Task<IEnumerable<Posts>> GetPostsByUser(int userId);
     }
 }
