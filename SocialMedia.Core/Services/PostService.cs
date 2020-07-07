@@ -1,10 +1,11 @@
-﻿using SocialMedia.Core.Data;
+﻿using SocialMedia.Core.CustomEntities;
+using SocialMedia.Core.Data;
 using SocialMedia.Core.Exceptions;
 using SocialMedia.Core.Interfaces;
+using SocialMedia.Core.QueryFilters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SocialMedia.Core.Services
@@ -14,9 +15,11 @@ namespace SocialMedia.Core.Services
         // Removemos estos repositorios y agregamos el Generico
         //private readonly IPostRepository _postRepository;
         //private readonly IUserRepository _userRepository;
+        /* 
+         * Remplazamos los repositorio9s genericos por los UnitiOfWork donde se 
+         * engloban todos los repositorios, es decir, nuestro repositorio de repositorios
+        */
 
-        // Remplazamos los repositorio9s genericos por los UnitiOfWork donde se
-        // engloban todos los repositorios, es decir, nuestro repositorio de repositorios
         //private readonly IRepository<Posts> _postRepository;
         //private readonly IRepository<Users> _userRepository;
 
@@ -26,11 +29,26 @@ namespace SocialMedia.Core.Services
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<Posts> GetPosts()
+        public PagedList<Posts> GetPosts(PostQueryFilter filters)
         {
-            //var posts = await _postRepository.GetPosts();
             var posts = _unitOfWork.PostRepository.GetAll();
-            return posts;
+            if(filters.UserId != null)
+            {
+                posts = posts.Where(x => x.UserId == filters.UserId);
+            }
+
+            if(filters.Date != null) 
+            {
+                posts = posts.Where(x => x.Date.ToShortDateString() == filters.Date?.ToShortDateString());
+            }
+
+            if (filters.Description != null)
+            {
+                posts = posts.Where(x => x.Description.ToLower().Contains(filters.Description.ToLower()));
+            }
+
+            var pagedPosts = PagedList<Posts>.Create(posts, filters.PageNumber, filters.PageSize);
+            return pagedPosts;
         }
 
         public async Task<Posts> GetPostById(int id)
