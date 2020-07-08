@@ -13,3 +13,13 @@
 * Fluent Validation
 
 * Filters
+
+* Generic Repository
+
+* Unit Of Work
+
+* Custom Exception
+
+* Pagination
+
+* Configuration Settings
