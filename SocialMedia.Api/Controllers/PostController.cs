@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 
 namespace SocialMedia.Api.Controllers
 {
+    [Produces("application/json")]//Elimina las opciones de retorno en la documentacion swagger
     [Route("api/[controller]")]
     [ApiController]
     public class PostController : ControllerBase
@@ -29,7 +30,13 @@ namespace SocialMedia.Api.Controllers
             _mapper = mapper;
             _urlService = urlService;
         }
+
         // GET: api/<PostController>
+        /// <summary>
+        /// Get all Post with some filters
+        /// </summary>
+        /// <param name="filters"></param>
+        /// <returns></returns>
         [HttpGet(Name = nameof(GetPosts))]
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<PostsDto>>))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<PostsDto>>))]
@@ -59,6 +66,11 @@ namespace SocialMedia.Api.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Get Post by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPost(int id)
         {
@@ -68,6 +80,12 @@ namespace SocialMedia.Api.Controllers
             return Ok(response);
         }
 
+
+        /// <summary>
+        /// Save Post
+        /// </summary>
+        /// <param name="postDto"></param>
+        /// <returns></returns>
         // POST api/<PostController>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] PostsDto postDto)
@@ -79,6 +97,12 @@ namespace SocialMedia.Api.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Keep the update of post by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="postDto"></param>
+        /// <returns></returns>
         // PUT api/<PostController>/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] PostsDto postDto)
@@ -90,6 +114,12 @@ namespace SocialMedia.Api.Controllers
             return Ok(response);
         }
 
+
+        /// <summary>
+        /// Remove Post by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // DELETE api/<PostController>/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
