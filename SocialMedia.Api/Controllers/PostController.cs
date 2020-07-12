@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SocialMedia.Api.Responses;
@@ -16,6 +17,7 @@ using System.Threading.Tasks;
 
 namespace SocialMedia.Api.Controllers
 {
+    [Authorize]
     [Produces("application/json")]//Elimina las opciones de retorno en la documentacion swagger
     [Route("api/[controller]")]
     [ApiController]

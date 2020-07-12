@@ -69,8 +69,15 @@ C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\bin\Debug\netcoreapp3.1
 C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\bin\Debug\netcoreapp3.1\SocialMedia.Api.xml
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\obj\Debug\netcoreapp3.1\SocialMedia.Api.xml
 C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\obj\Debug\netcoreapp3.1\SocialMedia.Api.csproj.CoreCompileInputs.cache
 C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\obj\Debug\netcoreapp3.1\SocialMedia.Api.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\obj\Debug\netcoreapp3.1\SocialMedia.Api.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\bin\Debug\netcoreapp3.1\SocialMedia.Api.xml
-C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\obj\Debug\netcoreapp3.1\SocialMedia.Api.xml
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Arturo\source\repos\SocialMedia\SocialMedia.Api\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
